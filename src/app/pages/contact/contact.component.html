@@ -1,0 +1,100 @@
+<!-- ======= Contact Section ======= -->
+<br>
+<br>
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Contact</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+                consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+                sit
+                in iste officiis commodi quidem hic quas.</p>
+        </div>
+    </div>
+
+    <div>
+        <iframe style="border:0; width: 100%; height: 350px;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.9692859230395!2d-105.99181952506835!3d38.53447616803813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x871517e89655688f%3A0xd9ab3b3176b6730e!2s327%20E%201st%20St%2C%20Salida%2C%20CO%2081201%2C%20USA!5e0!3m2!1sen!2sng!4v1691056148385!5m2!1sen!2sng"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="container">
+        <div class="row mt-5">
+
+            <div class="col-lg-4">
+                <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Location:</h4>
+                        <p>327 Medical professional corporation united states</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>info@mediprof.com</p>
+                    </div>
+
+                    <div class="phone">
+                        <i class="bi bi-phone"></i>
+                        <h4>Call:</h4>
+                        <p>+1 5589 55488 55s</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="php-email-form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input formControlName="name" type="text" name="name" class="form-control" id="name"
+                                placeholder="Your Name (John Doe)" required>
+                            <div *ngIf="getControl('name')?.invalid && getControl('name')?.touched">
+                                <p *ngIf="hasError('name', 'required')" class="text-danger">Name is required.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" formControlName="email" name="email" id="email"
+                                placeholder="Your Email (example@gmail.com)" required>
+                            <div *ngIf="getControl('email')?.invalid && getControl('email')?.touched">
+                                <p *ngIf="hasError('email', 'required')" class="text-danger">Email is required.</p>
+                                <p *ngIf="hasError('email', 'email')" class="text-danger">Please enter a valid email.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" formControlName="subject" name="subject" id="subject"
+                            placeholder="Subject (Lab Test)" required>
+                        <div *ngIf="getControl('subject')?.invalid && getControl('subject')?.touched">
+                            <p *ngIf="hasError('subject', 'required')" class="text-danger">Subject is required.</p>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" formControlName="message" name="message" rows="5"
+                            placeholder="Message (I am urinating often; I want to be examined and find out what is wrong with my system.)"
+                            required></textarea>
+                        <div *ngIf="getControl('message')?.invalid && getControl('message')?.touched">
+                            <p *ngIf="hasError('message', 'required')" class="text-danger">Message is required.</p>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div><button [ngClass]="contactForm.invalid ? 'disabled-form-btn text-center' : 'text-center'"
+                            type="submit" [disabled]="contactForm.invalid">Send
+                            Message</button></div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
