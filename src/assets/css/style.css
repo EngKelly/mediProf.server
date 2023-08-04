@@ -216,7 +216,20 @@ h6 {
 @media (max-width: 768px) {
   .appointment-btn {
     margin: 0 15px 0 0;
-    padding: 6px 18px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  #header .logo {
+    font-size: 1.2rem;
+  }
+
+  #header .logo a {
+    color: #2c4964;
+  }
+
+  #header .logo img {
+    max-height: 2rem;
   }
 }
 
@@ -1518,7 +1531,7 @@ section {
 }
 
 .contact .php-email-form .error-message {
-  display: none;
+  display: inline-block;
   color: #fff;
   background: #ed3c0d;
   text-align: left;
@@ -1531,7 +1544,7 @@ section {
 }
 
 .contact .php-email-form .sent-message {
-  display: none;
+  display: inline-block;
   color: #fff;
   background: #18d26e;
   text-align: center;
@@ -1540,7 +1553,7 @@ section {
 }
 
 .contact .php-email-form .loading {
-  display: none;
+  display: inline-block;
   background: #fff;
   text-align: center;
   padding: 15px;

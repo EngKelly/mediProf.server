@@ -1,3 +1,5 @@
+import { ContactDto } from './../../data/Dto/contact.dto';
+import { ContactService } from '../../services/contact/contact.service';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -5,6 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'hms-contact',
@@ -13,7 +16,14 @@ import {
 })
 export class ContactComponent {
   contactForm!: FormGroup;
-  constructor() {
+  contactDto!: ContactDto;
+  errorMessage!: string | null;
+  successMessage!: string | null;
+  IsLoading!: boolean;
+
+  constructor(private contactService: ContactService) {}
+
+  ngOnInit(): void {
     this.contactForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -21,7 +31,12 @@ export class ContactComponent {
       message: new FormControl('', [Validators.required]),
     });
   }
-
+  setTimeOut(timeOut: number = 2000): void {
+    setTimeout(() => {
+      this.errorMessage = null;
+      this.successMessage = null;
+    }, timeOut);
+  }
   getControl(name: string): AbstractControl | null {
     return this.contactForm.get(name);
   }
@@ -31,6 +46,25 @@ export class ContactComponent {
   }
 
   onSubmit(): void {
-    console.log(this.contactForm.value);
+    this.contactDto = this.contactForm.value;
+    this.IsLoading = true;
+    this.contactService.contact(this.contactDto).subscribe({
+      next: (res) => {
+        if (res.statusCode == HttpStatusCode.Ok) {
+          this.successMessage = res.message;
+          this.IsLoading = false;
+          this.setTimeOut(4000);
+        } else {
+          this.errorMessage = res.message?.message;
+          this.IsLoading = false;
+          this.setTimeOut(4000);
+        }
+      },
+      error: (err) => {
+        this.errorMessage = err.message.message;
+        this.IsLoading = false;
+        this.setTimeOut(3000);
+      },
+    });
   }
 }

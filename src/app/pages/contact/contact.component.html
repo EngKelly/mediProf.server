@@ -83,13 +83,15 @@
                         </div>
                     </div>
                     <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                        <div *ngIf="IsLoading" class="loading">Loading</div>
+                        <div *ngIf="errorMessage" class="error-message"> {{errorMessage}} </div>
+                        <div *ngIf="successMessage != null" class="sent-message"> {{successMessage}} </div>
                     </div>
-                    <div><button [ngClass]="contactForm.invalid ? 'disabled-form-btn text-center' : 'text-center'"
+                    <div>
+                        <button [ngClass]="contactForm.invalid ? 'disabled-form-btn text-center' : 'text-center'"
                             type="submit" [disabled]="contactForm.invalid">Send
-                            Message</button></div>
+                            Message</button>
+                    </div>
                 </form>
 
             </div>
