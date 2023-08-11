@@ -10,6 +10,7 @@ import { AppRoutingModule } from './routes/app.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
+import { ContactsComponent } from './admin/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppointmentComponent } from './pages/appointment/appointment.component'
     ContactComponent,
     HomeComponent,
     AppointmentComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,
