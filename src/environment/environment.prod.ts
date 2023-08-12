@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://mealserver.up.railway.app',
+  apiUrl: 'https://three23mediprof.onrender.com',
 };

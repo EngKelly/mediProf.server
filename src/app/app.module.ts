@@ -11,6 +11,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { TitleStrategy } from '@angular/router';
+import { TemplatePageTitleStrategy } from './extension/title.strategy';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,7 @@ import { ContactsComponent } from './admin/contacts/contacts.component';
     HomeComponent,
     AppointmentComponent,
     ContactsComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,10 @@ import { ContactsComponent } from './admin/contacts/contacts.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: TitleStrategy, useClass: TemplatePageTitleStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
