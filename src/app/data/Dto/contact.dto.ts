@@ -1,4 +1,5 @@
 export interface ContactDto {
+  _id?: string;
   name: string;
 
   email: string;
