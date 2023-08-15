@@ -1,1 +1,41 @@
-<p>contacts works!</p>
+<br>
+<br>
+<br>
+<div class="container mt-3">
+    <h2>Welcome back {{username}}</h2>
+    <p>{{successMessage}}</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts, let i = index">
+
+                <td>{{i+1}}</td>
+                <td>{{contact.name}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.subject}}</td>
+                <td>{{contact.message}}</td>
+                <a class="btn btn-primary bg-primary text-white" href="https://hostinger.titan.email/mail/"
+                    target="_blank" (click)="copyText(contact.email)">Respond
+                </a>
+
+                <button (click)="deleteContact(contact._id!)" class="btn btn-danger bg-danger text-white">Delete
+                </button>
+            </tr>
+
+        </tbody>
+    </table>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+
+</div>
+<br>
+<br>

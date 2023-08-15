@@ -59,6 +59,12 @@
                 <li *ngIf="IsMobile"><a (click)="toggle()" class="nav-link scrollto" routerLink="/contact">Contact</a>
                 </li>
                 <li *ngIf="!IsMobile"><a class="nav-link scrollto" routerLink="contact">Contact</a></li>
+                <li>
+                    <a *ngIf="!token.IsSuccessful" routerLink="login">Login</a>
+                    <a *ngIf="user != null" [routerLink]="['user', user.id]">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
             </ul>
             <i (click)="toggle()" class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

@@ -1,0 +1,19 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container col-md-6">
+    <div class="card" style="width:400px">
+        <img *ngIf="user?.profileURL == null" class="card-img-top" src="../../../assets/img/doctors/doctors-1.jpg"
+            alt="Card image">
+        <img *ngIf="user?.profileURL != null" class="card-img-top" [src]="user?.profileURL" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title">{{user?.username}}</h4>
+            <h5>{{user?.email}}</h5>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+
+    </div>
+
+</div>

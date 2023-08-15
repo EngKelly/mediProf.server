@@ -1,3 +1,5 @@
+import { JwtService } from './../../services/utils/jwt.service';
+import { UserDto } from './../../data/Dto/auth/user.dto';
 import { Component, HostListener } from '@angular/core';
 
 @Component({
@@ -8,10 +10,15 @@ import { Component, HostListener } from '@angular/core';
 export class NavbarComponent {
   IsOpen!: boolean;
   IsMobile!: boolean;
-  constructor() {}
+  user!: any | null;
+  token!: any;
 
-  ngOnInit() {
+  constructor(private jwtService: JwtService) {}
+
+  ngOnInit(): void {
     this.handleWindowResize();
+    this.token = this.jwtService.decodeJwtToken();
+    this.user = this.token.data;
   }
 
   toggle(): void {
@@ -21,7 +28,6 @@ export class NavbarComponent {
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: Event) {
     this.handleWindowResize();
-    console.log(this.IsMobile);
   }
 
   handleWindowResize() {
