@@ -105,6 +105,7 @@ export class SignupComponent {
   onSubmit(): void {
     this.IsFetching = true;
     this.regForm.value.profileURL = this.localStorage.getItem('UserImgPath')!;
+    this.regForm.value.role = 'user';
     this.authService.signUp(this.regForm.value).subscribe({
       next: (response) => {
         if (response.data !== null) {

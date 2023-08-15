@@ -1,0 +1,19 @@
+.card-body {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 2rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.card-body .left span {
+  font-size: large;
+  font-weight: bold;
+  color: #014968;
+}

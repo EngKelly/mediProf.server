@@ -1,8 +1,7 @@
-import { environment } from './../../../environment/environment';
-import { ContactDto } from './../../data/Dto/contact.dto';
-import { HttpResponse } from './../../data/Dto/http.response.dto';
+import { environment } from '../../../environment/environment';
+import { ContactDto } from '../../data/Dto/contact.dto';
+import { HttpResponse } from '../../data/Dto/http.response.dto';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,10 +17,11 @@ export class ContactService {
   }
 
   getContacts(
-    page: string = '1',
-    keyword: boolean = true
+    page: number = 1,
+    IsFetchByMonth: boolean = false,
+    limit: number = 20
   ): Observable<HttpResponse<ContactDto[]>> {
-    const url: string = `${environment.apiUrl}/contact/get-all?page=${page}&keyword=${keyword}`;
+    const url: string = `${environment.apiUrl}/contact/get-all?page=${page}&IsFetchByMonth=${IsFetchByMonth}&limit=${limit}`;
     return this.http.get<HttpResponse<ContactDto[]>>(url);
   }
 
