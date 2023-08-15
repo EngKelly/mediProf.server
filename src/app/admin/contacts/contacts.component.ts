@@ -12,9 +12,10 @@ import { JwtService } from '../../services/utils/jwt.service';
 })
 export class ContactsComponent {
   contacts!: ContactDto[] | undefined | null;
-  successMessage?: string;
-  errorMessage?: string;
+  successMessage!: string;
+  errorMessage!: string;
   IsFetching: boolean = false;
+  IsDeleting: boolean = false;
   username?: string;
   token!: any;
   mailto: string = 'mailto:';
@@ -27,6 +28,12 @@ export class ContactsComponent {
   ngOnInit() {
     this.getContacts();
     this.token = this.jwtService.decodeJwtToken();
+  }
+
+  setTimeOut(timeOut: number = 2000): void {
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, timeOut);
   }
 
   copyText(text: string) {
@@ -49,21 +56,27 @@ export class ContactsComponent {
       },
       error: (err) => {
         this.errorMessage = err.error.message.message;
+        this.IsFetching = false;
       },
     });
   }
 
   deleteContact(msgId: string): void {
-    this.IsFetching = true;
+    this.IsDeleting = true;
     this.contactService.deleteContact(msgId).subscribe({
       next: (res) => {
-        if (res.message == HttpStatusCode.Ok) {
+        if (res.statusCode == HttpStatusCode.Ok || res.data?.deleted) {
           this.successMessage = res.message;
-          this.IsFetching = false;
+          this.IsDeleting = false;
+          this.setTimeOut(3000);
         }
+        this.IsDeleting = false;
+        this.setTimeOut(3000);
       },
       error: (err) => {
         this.errorMessage = err.error.message.message;
+        this.IsDeleting = false;
+        this.setTimeOut(3000);
       },
     });
   }
