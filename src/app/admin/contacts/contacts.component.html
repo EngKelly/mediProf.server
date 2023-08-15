@@ -1,8 +1,8 @@
 <br>
 <br>
 <br>
-<div class="container mt-3">
-    <h2>Welcome back {{username}}</h2>
+<div class="container  mt-3">
+    <h2>Welcome back {{token.data.username}}</h2>
     <p>{{successMessage}}</p>
 
     <table class="table table-bordered">
@@ -13,6 +13,7 @@
                 <th>Email</th>
                 <th>Subject</th>
                 <th>Message</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,8 @@
                     target="_blank" (click)="copyText(contact.email)">Respond
                 </a>
 
-                <button (click)="deleteContact(contact._id!)" class="btn btn-danger bg-danger text-white">Delete
+                <button (click)="deleteContact(contact._id!)" class="btn btn-danger bg-danger text-white"
+                    [innerText]="IsFetching ? 'deleting' : 'Delete'">
                 </button>
             </tr>
 
@@ -39,3 +41,4 @@
 </div>
 <br>
 <br>
+<div *ngIf="IsFetching" id="preloader"></div>

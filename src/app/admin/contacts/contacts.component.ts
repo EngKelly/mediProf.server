@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ContactService } from '../../services/contact/contact.service';
 import { HttpStatusCode } from '@angular/common/http';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { JwtService } from '../../services/utils/jwt.service';
 
 @Component({
   selector: 'hms-contacts',
@@ -15,15 +16,17 @@ export class ContactsComponent {
   errorMessage?: string;
   IsFetching: boolean = false;
   username?: string;
-  sn: number = 0;
+  token!: any;
   mailto: string = 'mailto:';
   constructor(
     private contactService: ContactService,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private jwtService: JwtService
   ) {}
 
   ngOnInit() {
     this.getContacts();
+    this.token = this.jwtService.decodeJwtToken();
   }
 
   copyText(text: string) {
@@ -38,7 +41,6 @@ export class ContactsComponent {
           this.contacts = res.data;
           this.successMessage = `${res.data?.length} messages was found.`;
           this.IsFetching = false;
-          console.log(this.contacts);
         } else {
           this.errorMessage =
             'Sorry something unexpected happened while fetching you message try again';
@@ -52,8 +54,17 @@ export class ContactsComponent {
   }
 
   deleteContact(msgId: string): void {
-    this.contactService
-      .deleteContact(msgId)
-      .subscribe({ next: (res) => {}, error: (err) => {} });
+    this.IsFetching = true;
+    this.contactService.deleteContact(msgId).subscribe({
+      next: (res) => {
+        if (res.message == HttpStatusCode.Ok) {
+          this.successMessage = res.message;
+          this.IsFetching = false;
+        }
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message.message;
+      },
+    });
   }
 }

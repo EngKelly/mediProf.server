@@ -8,7 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './routes/app.routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
@@ -27,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersComponent } from './admin/users/users.component';
 import { UserComponent } from './pages/user/user.component';
+import { JwtTokenInterceptor } from './extension/http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { UserComponent } from './pages/user/user.component';
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: TitleStrategy, useClass: TemplatePageTitleStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

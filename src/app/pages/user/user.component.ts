@@ -12,6 +12,7 @@ import { UserDto } from '../../data/Dto/auth/user.dto';
 export class UserComponent {
   user!: UserDto | undefined;
   userId!: string;
+  IsLoading!: boolean;
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -19,13 +20,15 @@ export class UserComponent {
   ) {}
 
   ngOnInit(): void {
+    this.IsLoading = true;
     this.userId = this.activeRoute.snapshot.params['userId'];
     this.userService.getUser(this.userId).subscribe({
       next: (response) => {
         this.user = response.data;
-        console.log(this.user);
+        this.IsLoading = false;
       },
       error: (err) => {
+        this.IsLoading = false;
         console.log('Error getting the current logged in user');
       },
     });
