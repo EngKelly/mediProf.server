@@ -1,30 +1,28 @@
-<br>
-<br>
-<br>
 <div class="container col-md-6 mt-6">
-    <div class="card" style="width:400px">
-        <img *ngIf="user?.profileURL == null" class="card-img-top" src="../../../assets/img/doctors/doctors-1.jpg"
-            alt="Card image">
-        <img *ngIf="user?.profileURL != null" class="card-img-top" [src]="user?.profileURL" alt="Card image">
-        <div class="card-body">
-            <div class="left mr-5 mb-3">
+    <div class="row">
+        <div class="card" style="width:400px">
+            <img class="card-img-top" [src]="user?.profileURL == null ? defaultImgPath : user?.profileURL"
+                [alt]="user?.username">
+            <div class="card-body">
+                <div class="left mr-5 mb-3">
 
-                <span>Username</span>
-                <h4 class="card-title">{{user?.username}}</h4>
-                <span>Email </span>
-                <h5>{{user?.email}}</h5>
+                    <span>Username</span>
+                    <h4 class="card-title">{{user?.username}}</h4>
+                    <span>Email </span>
+                    <h5>{{user?.email}}</h5>
+                </div>
+                <div class="right">
+                    <a class="btn btn-primary text-white mb-3 mr-3" *ngIf="user?.role === 'admin'"
+                        routerLink="/admin/contacts">Contacts</a>
+                    <a class="btn btn-primary text-white mb-3 mr-3" *ngIf="user?.role === 'admin'"
+                        routerLink="/admin/users">Users</a>
+                </div>
             </div>
-            <div class="right">
-                <a class="btn btn-primary text-white mb-3 mr-3" *ngIf="user?.role === 'admin'"
-                    routerLink="/admin/contacts">Contacts</a>
-                <a class="btn btn-primary text-white mb-3 mr-3" *ngIf="user?.role === 'admin'"
-                    routerLink="/admin/users">Users</a>
-            </div>
+            <button class="btn m-auto mb-3 btn-danger btn-small" (click)="logout()">Logout</button>
+
         </div>
-        <button class="btn m-auto mb-3 btn-danger btn-small" (click)="logout()">Logout</button>
 
     </div>
 
 </div>
-
 <div *ngIf="IsLoading" id="preloader"></div>
