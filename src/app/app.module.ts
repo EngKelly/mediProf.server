@@ -12,7 +12,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { TitleStrategy } from '@angular/router';
 import { TemplatePageTitleStrategy } from './extension/title.strategy';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -29,6 +33,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { UserComponent } from './pages/user/user.component';
 import { JwtTokenInterceptor } from './extension/http.interceptor';
 import { TruncatePipe } from './pipes/truncate-string';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +67,7 @@ import { TruncatePipe } from './pipes/truncate-string';
     MatButtonModule,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: TitleStrategy, useClass: TemplatePageTitleStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
   ],
