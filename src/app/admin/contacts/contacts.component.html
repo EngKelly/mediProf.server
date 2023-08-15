@@ -3,9 +3,12 @@
 <br>
 <div class="container  mt-3">
     <h2>Welcome back {{token.data.username}}</h2>
-    <p>{{successMessage}}</p>
+    <p class="badge bg-success" *ngIf="successMessage != null">{{successMessage}}</p>
+    <p class="badge bg-danger" *ngIf="errorMessage != null">{{errorMessage}}</p>
 
     <table class="table table-bordered">
+        <h4 class="badge bg-danger" *ngIf="IsDeleting">Deleting...</h4>
+
         <thead>
             <tr>
                 <th>SN</th>
@@ -28,8 +31,7 @@
                     target="_blank" (click)="copyText(contact.email)">Respond
                 </a>
 
-                <button (click)="deleteContact(contact._id!)" class="btn btn-danger bg-danger text-white"
-                    [innerText]="IsFetching ? 'deleting' : 'Delete'">
+                <button (click)="deleteContact(contact._id!)" class="btn btn-danger bg-danger text-white">Delete
                 </button>
             </tr>
 
