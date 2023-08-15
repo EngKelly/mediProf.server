@@ -28,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UsersComponent } from './admin/users/users.component';
 import { UserComponent } from './pages/user/user.component';
 import { JwtTokenInterceptor } from './extension/http.interceptor';
+import { TruncatePipe } from './pipes/truncate-string';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { JwtTokenInterceptor } from './extension/http.interceptor';
     ReplyMessageComponent,
     UsersComponent,
     UserComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,

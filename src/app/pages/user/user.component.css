@@ -1,3 +1,7 @@
+.container {
+  margin: 6rem auto 0;
+}
+
 .card-body {
   display: flex !important;
   align-items: center;
@@ -16,4 +20,10 @@
   font-size: large;
   font-weight: bold;
   color: #014968;
+}
+
+.card-img-top {
+  height: 20rem;
+  width: 100%;
+  aspect-ratio: 1/1 !important;
 }
