@@ -12,6 +12,7 @@ import { UserDto } from '../../data/Dto/auth/user.dto';
 export class UserComponent {
   user!: UserDto | undefined;
   userId!: string;
+  defaultImgPath: string = '../../../assets/img/doctors/doctors-1.jpg';
   IsLoading!: boolean;
   constructor(
     private userService: UserService,
