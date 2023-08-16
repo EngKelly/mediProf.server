@@ -1,3 +1,3 @@
-import { UserDto } from './user.dto';
+import { UserDto } from '../user/user.dto';
 
 export interface SignUpDto extends UserDto {}

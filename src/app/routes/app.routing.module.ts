@@ -5,7 +5,13 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(route, { useHash: true }), CommonModule],
+  imports: [
+    RouterModule.forRoot(route, {
+      useHash: true,
+      scrollPositionRestoration: 'top',
+    }),
+    CommonModule,
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

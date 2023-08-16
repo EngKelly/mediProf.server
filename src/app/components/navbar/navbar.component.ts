@@ -1,5 +1,5 @@
 import { JwtService } from './../../services/utils/jwt.service';
-import { UserDto } from './../../data/Dto/auth/user.dto';
+import { UserDto } from '../../data/Dto/user/user.dto';
 import { Component, HostListener } from '@angular/core';
 
 @Component({

@@ -10,9 +10,21 @@ import { SignupComponent } from '../components/signup/signup.component';
 import { UserComponent } from '../pages/user/user.component';
 import { UsersComponent } from '../admin/users/users.component';
 import { navigationGuard } from '../guard/navigation/navigation.guard';
+import { ServicesComponent } from '../pages/services/services.component';
+import { DoctorsComponent } from '../pages/doctors/doctors.component';
+import { DepartmentsComponent } from '../pages/departments/departments.component';
+import { AboutComponent } from '../pages/about/about.component';
 
 export const route: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
+  { path: 'services', component: ServicesComponent, title: 'Service' },
+  { path: 'about', component: AboutComponent, title: 'About' },
+  {
+    path: 'departments',
+    component: DepartmentsComponent,
+    title: 'Departments',
+  },
+  { path: 'doctors', component: DoctorsComponent, title: 'Doctors' },
   { path: 'home', component: HomeComponent, title: 'Home' },
   {
     path: 'login',

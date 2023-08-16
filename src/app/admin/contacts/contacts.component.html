@@ -1,8 +1,5 @@
-<br>
-<br>
-<br>
 <div class="container mt-3">
-    <h2>Welcome back {{token.data.username}}</h2>
+    <h2>Welcome back {{token?.data?.username}}</h2>
     <p class="badge bg-success" *ngIf="successMessage != null">{{successMessage}}</p>
     <p class="badge bg-danger" *ngIf="errorMessage != null">{{errorMessage}}</p>
 
@@ -46,6 +43,4 @@
     </mat-paginator>
 
 </div>
-<br>
-<br>
 <div *ngIf="IsFetching" id="preloader"></div>

@@ -9,13 +9,13 @@
             <p>Looking for Expert Medical Advice or Have Questions About Our Services? Reach Out and Let the Dedicated
                 Team at 327
                 Medical Professionals Assist You in Your Health Journey.</p>
+            <h4 *ngIf="IsLoadingIframe" class="badge bg-info">Loading map...</h4>
         </div>
     </div>
 
-    <div>
-        <iframe style="border:0; width: 100%; height: 350px;"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.9692859230395!2d-105.99181952506835!3d38.53447616803813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x871517e89655688f%3A0xd9ab3b3176b6730e!2s327%20E%201st%20St%2C%20Salida%2C%20CO%2081201%2C%20USA!5e0!3m2!1sen!2sng!4v1691056148385!5m2!1sen!2sng"
-            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div *ngIf="iframeUrl != null">
+        <iframe style="border:0; width: 100%; height: 350px;" [src]="iframeUrl" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <div class="container">
@@ -26,7 +26,7 @@
                     <div class="address">
                         <i class="bi bi-geo-alt"></i>
                         <h4>Location:</h4>
-                        <p>327 Medical professional corporation united states</p>
+                        <p>327 EAST 1ST STREET SALIDA C0 81201-2801</p>
                     </div>
 
                     <div class="email">
@@ -38,7 +38,7 @@
                     <div class="phone">
                         <i class="bi bi-phone"></i>
                         <h4>Call:</h4>
-                        <p>+1 5589 55488 55s</p>
+                        <p>+7199415476</p>
                     </div>
 
                 </div>

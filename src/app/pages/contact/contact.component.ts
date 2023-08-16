@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { HttpStatusCode } from '@angular/common/http';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'hms-contact',
@@ -20,8 +21,13 @@ export class ContactComponent {
   errorMessage!: string | null;
   successMessage!: string | null;
   IsLoading!: boolean;
+  iframeUrl!: SafeResourceUrl;
+  IsLoadingIframe!: boolean;
 
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
@@ -30,7 +36,19 @@ export class ContactComponent {
       subject: new FormControl('', Validators.required),
       message: new FormControl('', [Validators.required]),
     });
+    this.loadIframe();
   }
+
+  loadIframe(): void {
+    this.IsLoadingIframe = true;
+    setTimeout(() => {
+      this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.9692859230395!2d-105.99181952506835!3d38.53447616803813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x871517e89655688f%3A0xd9ab3b3176b6730e!2s327%20E%201st%20St%2C%20Salida%2C%20CO%2081201%2C%20USA!5e0!3m2!1sen!2sng!4v1691056148385!5m2!1sen!2sng'
+      );
+      this.IsLoadingIframe = false;
+    }, 2000);
+  }
+
   setTimeOut(timeOut: number = 2000): void {
     setTimeout(() => {
       this.errorMessage = null;
