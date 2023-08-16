@@ -1,4 +1,4 @@
-import { UserDto } from './../../data/Dto/auth/user.dto';
+import { UserDto } from '../../data/Dto/user/user.dto';
 import { AuthService } from '../../services/auth/auth.service';
 import { Component, Inject } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
@@ -50,6 +50,7 @@ export class SignupComponent {
     setTimeout(() => {
       this.errorMessage = null;
       this.successMessage = null;
+      this.error = null;
     }, timeOut);
   }
   getControl(name: string): AbstractControl | null {
@@ -103,6 +104,11 @@ export class SignupComponent {
   }
 
   onSubmit(): void {
+    if (!this.regForm.valid) {
+      this.errorMessage = 'Fill all the required field.';
+      this.setTimeOut(3000);
+      return;
+    }
     this.IsFetching = true;
     this.regForm.value.profileURL = this.localStorage.getItem('UserImgPath')!;
     this.regForm.value.role = 'user';
@@ -112,6 +118,8 @@ export class SignupComponent {
           this.IsFetching = false;
           this.router.navigate(['/login']);
         }
+        this.IsFetching = false;
+        this.errorMessage = 'Sorry something unexpected happened!.';
       },
       error: (err) => {
         this.error = err.error.message;

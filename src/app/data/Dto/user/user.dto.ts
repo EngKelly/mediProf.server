@@ -10,4 +10,6 @@ export interface UserDto {
   password: string;
 
   role: string;
+
+  createdAt?: Date;
 }

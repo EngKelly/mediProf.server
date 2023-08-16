@@ -33,6 +33,15 @@ import { UsersComponent } from './admin/users/users.component';
 import { UserComponent } from './pages/user/user.component';
 import { JwtTokenInterceptor } from './extension/http.interceptor';
 import { TruncatePipe } from './pipes/truncate-string';
+import { MatTableModule } from '@angular/material/table';
+import { ServicesComponent } from './pages/services/services.component';
+import { DepartmentsComponent } from './pages/departments/departments.component';
+import { DoctorsComponent } from './pages/doctors/doctors.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
+import { FaqsComponent } from './components/faqs/faqs.component';
+import { CountsComponent } from './components/counts/counts.component';
+import { AboutComponent } from './pages/about/about.component';
+import { WhyUsComponent } from './components/why-us/why-us.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +59,14 @@ import { TruncatePipe } from './pipes/truncate-string';
     UsersComponent,
     UserComponent,
     TruncatePipe,
+    ServicesComponent,
+    DepartmentsComponent,
+    DoctorsComponent,
+    GalleryComponent,
+    FaqsComponent,
+    CountsComponent,
+    AboutComponent,
+    WhyUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +82,7 @@ import { TruncatePipe } from './pipes/truncate-string';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
+    MatTableModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

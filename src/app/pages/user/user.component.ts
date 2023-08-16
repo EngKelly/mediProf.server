@@ -2,7 +2,7 @@ import { AuthService } from './../../services/auth/auth.service';
 import { UserService } from '../../services/user/user.service';
 import { Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserDto } from '../../data/Dto/auth/user.dto';
+import { UserDto } from '../../data/Dto/user/user.dto';
 
 @Component({
   selector: 'hms-user',

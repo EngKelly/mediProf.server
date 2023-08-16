@@ -1,4 +1,4 @@
-import { UserDto } from '../../data/Dto/auth/user.dto';
+import { UserDto } from '../../data/Dto/user/user.dto';
 
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
