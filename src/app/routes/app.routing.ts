@@ -14,11 +14,13 @@ import { ServicesComponent } from '../pages/services/services.component';
 import { DoctorsComponent } from '../pages/doctors/doctors.component';
 import { DepartmentsComponent } from '../pages/departments/departments.component';
 import { AboutComponent } from '../pages/about/about.component';
+import { ReplyMessageComponent } from '../components/modals/message/reply-message.component';
 
 export const route: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
   { path: 'services', component: ServicesComponent, title: 'Service' },
   { path: 'about', component: AboutComponent, title: 'About' },
+  { path: 'reply-modal', component: ReplyMessageComponent, title: 'Reply' },
   {
     path: 'departments',
     component: DepartmentsComponent,
