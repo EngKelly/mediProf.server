@@ -89,6 +89,7 @@ export class ContactsComponent {
   pageChanged(event: PageEvent) {
     const page: number = event.pageIndex + 1;
     this.getContacts(page, false, event.pageSize);
+    window.scrollTo(0, 0);
   }
 
   deleteContact(msgId: string): void {

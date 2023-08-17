@@ -11,20 +11,21 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Delete {{userEmail}} </h4>
+                <h4 class="modal-title">Delete message from {{userEmail}} </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <h5>Confirmation Required</h5>
-                Are you sure to delete {{userEmail}}. By clicking ok this user will be deleted permanently
+                <h2>Confirmation Required</h2>
+                <p> Are you sure to delete {{userEmail}} message. By clicking delete button bellow, this message will be
+                    deleted permanently</p>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Delete User </button>
+                <button type="button" class="btn btn-danger text-white">Delete User </button>
+                <button type="button" class="btn btn-info text-white" data-bs-dismiss="modal">Close</button>
             </div>
 
         </div>
