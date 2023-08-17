@@ -84,6 +84,7 @@ export class UsersComponent {
       limit: this.limit,
     };
     this.getUsers(query);
+    window.scrollTo(0, 0);
   }
 
   deleteUser(msgId: string): void {
