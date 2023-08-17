@@ -20,15 +20,12 @@
             <tr *ngFor="let contact of contacts, let i = index">
 
                 <td>{{i+1}}</td>
-                <td>{{contact.name}}</td>
-                <td>{{contact.email}}</td>
-                <td>{{contact.subject}}</td>
-                <td>{{contact.message}}</td>
+                <td>{{contact?.name}}</td>
+                <td>{{contact?.email}}</td>
+                <td>{{contact?.subject}}</td>
+                <td>{{contact?.message}}</td>
                 <td class="flex-column d-flex">
-                    <a class="mb-3 mr-4 btn btn-primary bg-primary text-white"
-                        href="https://hostinger.titan.email/mail/" target="_blank"
-                        (click)="copyText(contact.email)">Respond
-                    </a>
+                    <hms-reply-message [userEmail]="contact.email" (click)="copyText(contact.email)" />
 
                     <button (click)="deleteContact(contact._id!)"
                         class="mt-4 mb-3 btn btn-danger bg-danger text-white">Delete

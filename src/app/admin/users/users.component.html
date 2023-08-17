@@ -2,9 +2,9 @@
     <h2>Welcome back {{token?.data?.username}}</h2>
     <p class="badge bg-success" *ngIf="successMessage != null">{{successMessage}}</p>
     <p class="badge bg-danger" *ngIf="errorMessage != null">{{errorMessage}}</p>
+    <h4 class="badge bg-danger" *ngIf="IsDeleting">Deleting user...</h4>
 
     <div class="card_container">
-        <h4 class="badge bg-danger" *ngIf="IsDeleting">Deleting message...</h4>
 
         <div class="card" *ngFor="let user of users">
             <img class="card-img-top" [src]="user?.profileURL == null ? defaultImgPath : user?.profileURL"

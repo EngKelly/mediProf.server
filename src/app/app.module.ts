@@ -42,6 +42,7 @@ import { FaqsComponent } from './components/faqs/faqs.component';
 import { CountsComponent } from './components/counts/counts.component';
 import { AboutComponent } from './pages/about/about.component';
 import { WhyUsComponent } from './components/why-us/why-us.component';
+import { DeleteUserComponent } from './components/modals/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { WhyUsComponent } from './components/why-us/why-us.component';
     CountsComponent,
     AboutComponent,
     WhyUsComponent,
+    DeleteUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,7 @@ import { WhyUsComponent } from './components/why-us/why-us.component';
     MatTableModule,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: TitleStrategy, useClass: TemplatePageTitleStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
   ],

@@ -27,6 +27,7 @@ export class UserService {
     const url: string = `${environment.apiUrl}/user/get-all?page=${query.page}&limit=${query.limit}&keyword=${query.keyword}`;
     return this.http.get<HttpResponse<UserDto[]>>(url);
   }
+
   deleteUser(id: string): Observable<HttpResponse> {
     const url: string = `${environment.apiUrl}/user/${id}`;
     return this.http.delete<HttpResponse>(url);

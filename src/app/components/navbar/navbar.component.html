@@ -20,7 +20,7 @@
 
         <!-- <h1 class="logo me-auto"><a href="index.html">Medilab</a></h1> -->
 
-        <a routerLink="/home" class="logo me-auto"><img src="../../../assets/img/logo.png" alt="" class="img-fluid">
+        <a routerLink="home" class="logo me-auto"><img src="../../../assets/img/logo.png" alt="" class="img-fluid">
             327MedIProf</a>
 
         <nav id="navbar"
@@ -38,7 +38,7 @@
                         routerLink="departments">Departments</a>
                 </li>
                 <li *ngIf="!IsMobile"><a class="nav-link scrollto" routerLink="departments">Departments</a></li>
-                <li *ngIf="IsMobile"><a (click)="toggle()" class="nav-link scrollto" routerLink="#doctors">Doctors</a>
+                <li *ngIf="IsMobile"><a (click)="toggle()" class="nav-link scrollto" routerLink="doctors">Doctors</a>
                 </li>
                 <li *ngIf="!IsMobile"><a class="nav-link scrollto" routerLink="doctors">Doctors</a></li>
                 <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -59,7 +59,7 @@
                         <li><a href="#">Drop Down 4</a></li>
                     </ul>
                 </li> -->
-                <li *ngIf="IsMobile"><a (click)="toggle()" class="nav-link scrollto" routerLink="/contact">Contact</a>
+                <li *ngIf="IsMobile"><a (click)="toggle()" class="nav-link scrollto" routerLink="contact">Contact</a>
                 </li>
                 <li *ngIf="!IsMobile"><a class="nav-link scrollto" routerLink="contact">Contact</a></li>
                 <li *ngIf="IsMobile" (click)="toggle()">
