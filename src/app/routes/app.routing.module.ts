@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
   declarations: [],
   imports: [
     RouterModule.forRoot(route, {
+      useHash: true,
       scrollPositionRestoration: 'top',
     }),
     CommonModule,

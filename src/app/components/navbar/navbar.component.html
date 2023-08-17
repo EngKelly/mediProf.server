@@ -65,13 +65,13 @@
                 <li *ngIf="IsMobile" (click)="toggle()">
                     <a *ngIf="!token.IsSuccessful" routerLink="login">Login</a>
                     <a *ngIf="user != null" [routerLink]="['user', user.id]">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user user_icon"></i> <span class="badge p-2 m-2 bg-primary">Account</span>
                     </a>
                 </li>
                 <li *ngIf="!IsMobile">
                     <a *ngIf="!token.IsSuccessful" routerLink="login">Login</a>
                     <a *ngIf="user != null" [routerLink]="['user', user.id]">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user user_icon"></i>
                     </a>
                 </li>
             </ul>

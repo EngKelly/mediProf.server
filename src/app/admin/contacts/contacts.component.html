@@ -1,6 +1,8 @@
 <div class="container mt-3">
     <h2>Welcome back {{token?.data?.username}}</h2>
+    <br>
     <p class="badge bg-success" *ngIf="successMessage != null">{{successMessage}}</p>
+    <br>
     <p class="badge bg-danger" *ngIf="errorMessage != null">{{errorMessage}}</p>
 
     <table class="table table-bordered">
@@ -17,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let contact of contacts, let i = index">
+            <tr *ngFor="let contact of contacts, let i = index, trackBy: trackByFn">
 
                 <td>{{i+1}}</td>
                 <td>{{contact?.name}}</td>
@@ -25,19 +27,20 @@
                 <td>{{contact?.subject}}</td>
                 <td>{{contact?.message}}</td>
                 <td class="flex-column d-flex">
-                    <hms-reply-message [userEmail]="contact.email" (click)="copyText(contact.email)" />
+                    <hms-reply-message [userEmail]="contactUserEmail" (click)="passEmail(i)" />
 
-                    <button (click)="deleteContact(contact._id!)"
-                        class="mt-4 mb-3 btn btn-danger bg-danger text-white">Delete
-                    </button>
+                    <hms-delete-user [userEmail]="contactUserEmail" (click)="passEmail(i)" />
                 </td>
 
             </tr>
 
         </tbody>
     </table>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    <mat-paginator [length]="100" [pageSize]="limit" [pageSizeOptions]="[10, 25, 100]" (page)="pageChanged($event)">
     </mat-paginator>
-
+    <br>
+    <br>
+    <p class="badge bg-info" *ngIf="infoMessage != null">{{infoMessage}}</p>
+    <br>
 </div>
 <div *ngIf="IsFetching" id="preloader"></div>
