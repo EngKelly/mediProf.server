@@ -31,9 +31,12 @@
 
     </div>
     <div *ngIf="IsFetching" id="preloader"></div>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    <mat-paginator [length]="100" [pageSize]="limit" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageChanged($event)">
     </mat-paginator>
-
+    <br>
+    <br>
+    <p class="badge bg-info" *ngIf="infoMessage != null">{{infoMessage}}</p>
+    <br>
 </div>
 <div *ngIf="IsFetching" id="preloader"></div>
 <div class="badge p-2 m-auto text-center text-white bg-info" *ngIf="users == undefined"> No user

@@ -7,7 +7,7 @@ export interface PaginationQueryDto {
 
   month?: number;
 
-  IsFetchByMonth?: string;
+  IsFetchByMonth?: boolean;
 
   keyword: string;
 }

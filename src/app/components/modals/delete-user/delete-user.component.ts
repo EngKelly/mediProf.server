@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./delete-user.component.css'],
 })
 export class DeleteUserComponent {
-  @Input()
+  @Input({ required: true })
   userEmail!: string;
 }

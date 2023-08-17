@@ -72,16 +72,19 @@ export class ContactComponent {
           this.successMessage = res.message;
           this.IsLoading = false;
           this.setTimeOut(4000);
+          this.contactForm.reset();
         } else {
           this.errorMessage = res.message?.message;
           this.IsLoading = false;
           this.setTimeOut(4000);
+          this.contactForm.reset();
         }
       },
       error: (err) => {
         this.errorMessage = err.message.message;
         this.IsLoading = false;
         this.setTimeOut(3000);
+        this.contactForm.reset();
       },
     });
   }

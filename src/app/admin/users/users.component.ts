@@ -5,6 +5,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { JwtService } from '../../services/utils/jwt.service';
 import { PaginationQueryDto } from 'src/app/data/Dto/request.query.dto';
 import { UserDto } from '../../data/Dto/user/user.dto';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'hms-users',
@@ -21,6 +22,11 @@ export class UsersComponent {
   token!: any;
   defaultImgPath: string = '../../../assets/img/doctors/doctors-1.jpg';
   mailto: string = 'mailto:';
+  page = 1;
+  limit = 10;
+  totalItems!: number;
+  infoMessage!: string;
+
   constructor(
     private userService: UserService,
     private clipboard: Clipboard,
@@ -35,6 +41,7 @@ export class UsersComponent {
   setTimeOut(timeOut: number = 2000): void {
     setTimeout(() => {
       this.errorMessage = '';
+      this.infoMessage = '';
     }, timeOut);
   }
 
@@ -52,10 +59,15 @@ export class UsersComponent {
           this.users = res.data;
           this.successMessage = `${res?.data?.length} users was found.`;
           this.IsFetching = false;
+        } else if (res.data == null) {
+          this.infoMessage = 'This are the last contacts in the contact list';
+          this.IsFetching = false;
+          this.setTimeOut(4000);
         } else {
           this.errorMessage =
             'Sorry something unexpected happened while fetching you message try again';
           this.IsFetching = false;
+          this.setTimeOut(5000);
         }
       },
       error: (err) => {
@@ -63,6 +75,15 @@ export class UsersComponent {
         this.IsFetching = false;
       },
     });
+  }
+
+  pageChanged(event: PageEvent) {
+    const query: PaginationQueryDto = {
+      page: event.pageIndex + 1,
+      keyword: '',
+      limit: this.limit,
+    };
+    this.getUsers(query);
   }
 
   deleteUser(msgId: string): void {
