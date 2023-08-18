@@ -25,6 +25,8 @@ export class ContactsComponent {
   page = 1;
   limit = 10;
   totalItems!: number;
+  IsCopied!: boolean;
+  value!: string;
 
   constructor(
     private contactService: ContactService,
@@ -41,14 +43,13 @@ export class ContactsComponent {
     setTimeout(() => {
       this.errorMessage = '';
       this.infoMessage = '';
+      this.IsCopied = false;
     }, timeOut);
   }
 
   passEmail(index: number) {
     const email: string = this.contacts![index].email;
     this.contactUserEmail = email;
-    this.clipboard.copy(email);
-    console.log('clicked');
   }
 
   trackByFn(index: number, item: any): any {
@@ -86,29 +87,16 @@ export class ContactsComponent {
     });
   }
 
+  copyText(text: string, value: string): void {
+    this.clipboard.copy(text);
+    this.value = value;
+    this.IsCopied = true;
+    this.setTimeOut(3000);
+  }
+
   pageChanged(event: PageEvent) {
     const page: number = event.pageIndex + 1;
     this.getContacts(page, false, event.pageSize);
     window.scrollTo(0, 0);
-  }
-
-  deleteContact(msgId: string): void {
-    this.IsDeleting = true;
-    this.contactService.deleteContact(msgId).subscribe({
-      next: (res) => {
-        if (res.statusCode == HttpStatusCode.Ok || res.data?.deleted) {
-          this.successMessage = res.message;
-          this.IsDeleting = false;
-          this.setTimeOut(3000);
-        }
-        this.IsDeleting = false;
-        this.setTimeOut(3000);
-      },
-      error: (err) => {
-        this.errorMessage = err.error.message.message;
-        this.IsDeleting = false;
-        this.setTimeOut(3000);
-      },
-    });
   }
 }

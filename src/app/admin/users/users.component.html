@@ -3,6 +3,9 @@
     <p class="badge bg-success" *ngIf="successMessage != null">{{successMessage}}</p>
     <p class="badge bg-danger" *ngIf="errorMessage != null">{{errorMessage}}</p>
     <h4 class="badge bg-danger" *ngIf="IsDeleting">Deleting user...</h4>
+    <br>
+    <p class="badge bg-info text-dark" *ngIf="infoMessage != null">{{infoMessage}}</p>
+    <br>
 
     <div class="card_container">
 
@@ -33,10 +36,7 @@
     <div *ngIf="IsFetching" id="preloader"></div>
     <mat-paginator [length]="100" [pageSize]="limit" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageChanged($event)">
     </mat-paginator>
-    <br>
-    <br>
-    <p class="badge bg-info" *ngIf="infoMessage != null">{{infoMessage}}</p>
-    <br>
+
 </div>
 <div *ngIf="IsFetching" id="preloader"></div>
 <div class="badge p-2 m-auto text-center text-white bg-info" *ngIf="users == undefined"> No user

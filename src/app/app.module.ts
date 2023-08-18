@@ -42,7 +42,7 @@ import { FaqsComponent } from './components/faqs/faqs.component';
 import { CountsComponent } from './components/counts/counts.component';
 import { AboutComponent } from './pages/about/about.component';
 import { WhyUsComponent } from './components/why-us/why-us.component';
-import { DeleteUserComponent } from './components/modals/delete-user/delete-user.component';
+import { DeleteContactComponent } from './components/modals/delete-contact/delete-contact.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import { DeleteUserComponent } from './components/modals/delete-user/delete-user
     CountsComponent,
     AboutComponent,
     WhyUsComponent,
-    DeleteUserComponent,
+    DeleteContactComponent,
   ],
   imports: [
     BrowserModule,

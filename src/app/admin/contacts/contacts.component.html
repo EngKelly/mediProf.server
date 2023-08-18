@@ -4,6 +4,11 @@
     <p class="badge bg-success" *ngIf="successMessage != null">{{successMessage}}</p>
     <br>
     <p class="badge bg-danger" *ngIf="errorMessage != null">{{errorMessage}}</p>
+    <br>
+    <p class="badge bg-info text-dark" *ngIf="infoMessage != null">{{infoMessage}}</p>
+    <br>
+    <span *ngIf="IsCopied" class="copyMessage badge bg-success p-2">Contact {{value}} Copied</span>
+    <br><br>
 
     <table class="table table-bordered">
         <h4 class="badge bg-danger" *ngIf="IsDeleting">Deleting message...</h4>
@@ -19,17 +24,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let contact of contacts, let i = index, trackBy: trackByFn">
+            <tr *ngFor="let contact of contacts, let i = index">
 
-                <td>{{i+1}}</td>
-                <td>{{contact?.name}}</td>
-                <td>{{contact?.email}}</td>
-                <td>{{contact?.subject}}</td>
-                <td>{{contact?.message}}</td>
-                <td class="flex-column d-flex">
-                    <hms-reply-message [userEmail]="contactUserEmail" (click)="passEmail(i)" />
+                <td style="width: 4rem;">{{i+1}}<span style="margin-left: 0.5rem;"><i
+                            (click)="copyText(contact._id!, 'id')" class="fa-regular fa-copy"></i></span> </td>
+                <td style="width: 5rem;">{{contact?.name}}</td>
+                <td style="width: 15rem;">{{contact?.email}} <span><i (click)="copyText(contact.email, 'email')"
+                            class="fa-regular fa-copy"></i></span>
+                </td>
+                <td style="width: 10rem;">{{contact?.subject}}
+                </td>
+                <td style="width: 31rem;">{{contact?.message}}</td>
+                <td style="width: 7rem;" class="flex-column d-flex">
+                    <hms-reply-message [userEmail]="contactUserEmail" />
 
-                    <hms-delete-user [userEmail]="contactUserEmail" (click)="passEmail(i)" />
+                    <hms-delete-contact [userEmail]="contactUserEmail" />
                 </td>
 
             </tr>
@@ -38,9 +47,5 @@
     </table>
     <mat-paginator [length]="100" [pageSize]="limit" [pageSizeOptions]="[10, 25, 100]" (page)="pageChanged($event)">
     </mat-paginator>
-    <br>
-    <br>
-    <p class="badge bg-info" *ngIf="infoMessage != null">{{infoMessage}}</p>
-    <br>
 </div>
 <div *ngIf="IsFetching" id="preloader"></div>
