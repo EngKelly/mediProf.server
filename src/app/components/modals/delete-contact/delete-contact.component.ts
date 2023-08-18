@@ -50,14 +50,17 @@ export class DeleteContactComponent {
           this.successMessage = res.message;
           this.IsDeleting = false;
           this.setTimeOut(3000);
+          this.delForm.reset();
         }
         this.IsDeleting = false;
         this.setTimeOut(3000);
+        this.delForm.reset();
       },
       error: (err) => {
         this.errorMessage = err.error.message.message;
         this.IsDeleting = false;
         this.setTimeOut(3000);
+        this.delForm.reset();
       },
     });
   }
