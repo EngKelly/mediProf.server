@@ -69,6 +69,9 @@ export class ContactsComponent {
           this.successMessage = `${res.data?.length} messages was found.`;
           this.totalItems = res.data.length;
           this.IsFetching = false;
+        } else if (res.statusCode == HttpStatusCode.NotFound) {
+          this.successMessage = 'No message found.';
+          this.IsFetching = false;
         } else if (res.data == null) {
           this.infoMessage = 'This are the last contacts in the contact list';
           this.IsFetching = false;

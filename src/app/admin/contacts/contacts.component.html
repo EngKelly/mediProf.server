@@ -10,7 +10,7 @@
     <span *ngIf="IsCopied" class="copyMessage badge bg-success p-2">Contact {{value}} Copied</span>
     <br><br>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" *ngIf="contacts != null">
         <h4 class="badge bg-danger" *ngIf="IsDeleting">Deleting message...</h4>
 
         <thead>
