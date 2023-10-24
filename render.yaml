@@ -1,0 +1,11 @@
+services:
+- type: web
+  name: client
+  env: static
+  buildCommand: ng build --prod
+  staticPublishPath: dist/client
+  routes:
+     - type: rewrite
+       source: /*
+       destination: /index.html
+ 
