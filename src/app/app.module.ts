@@ -13,7 +13,6 @@ import { AppointmentComponent } from './pages/appointment/appointment.component'
 import { ContactsComponent } from './admin/contacts/contacts.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import {
-  HashLocationStrategy,
   LocationStrategy,
   PathLocationStrategy,
 } from '@angular/common';
@@ -87,7 +86,7 @@ import { DeleteContactComponent } from './components/modals/delete-contact/delet
     MatTableModule,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: TitleStrategy, useClass: TemplatePageTitleStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
   ],

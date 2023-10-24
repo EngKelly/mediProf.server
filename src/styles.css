@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .mat-headline-3,
 .mat-headline-1 {
   font-weight: 0 !important;
