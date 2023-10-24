@@ -11,11 +11,7 @@ import { AppRoutingModule } from './routes/app.routing.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
-import { NotfoundComponent } from './components/notfound/notfound.component';
-import {
-  LocationStrategy,
-  PathLocationStrategy,
-} from '@angular/common';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { TitleStrategy } from '@angular/router';
 import { TemplatePageTitleStrategy } from './extension/title.strategy';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -52,7 +48,6 @@ import { DeleteContactComponent } from './components/modals/delete-contact/delet
     HomeComponent,
     AppointmentComponent,
     ContactsComponent,
-    NotfoundComponent,
     LoginComponent,
     SignupComponent,
     ReplyMessageComponent,
