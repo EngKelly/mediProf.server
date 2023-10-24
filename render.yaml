@@ -5,7 +5,7 @@ services:
   buildCommand: ng build --prod
   staticPublishPath: dist/client
   routes:
-     - type: rewrite
+     - type: redirect
        source: /*
        destination: /index.html
  
